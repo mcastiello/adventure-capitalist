@@ -1,4 +1,4 @@
-import {Business} from "./businessesTypes";
+import { Business } from './businessesTypes';
 
 export type BusinessesState = Business[];
 

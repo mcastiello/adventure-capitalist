@@ -63,7 +63,7 @@ export const updateProfit = (id: BusinessID, amount: number, collectionTime?: nu
 export interface SetBusinessManagedAction {
   type: typeof SET_BUSINESS_MANAGED;
   id: BusinessID;
-  value: boolean
+  value: boolean;
 }
 export const setBusinessManaged = (id: BusinessID, value: boolean): SetBusinessManagedAction => ({
   type: SET_BUSINESS_MANAGED,
@@ -71,4 +71,10 @@ export const setBusinessManaged = (id: BusinessID, value: boolean): SetBusinessM
   value
 });
 
-export type BusinessesActions = AddBusinessAction | RemoveBusinessAction | RenameBusinessAction | CollectProfitAction | UpdateProfitAction | SetBusinessManagedAction;
+export type BusinessesActions =
+  | AddBusinessAction
+  | RemoveBusinessAction
+  | RenameBusinessAction
+  | CollectProfitAction
+  | UpdateProfitAction
+  | SetBusinessManagedAction;

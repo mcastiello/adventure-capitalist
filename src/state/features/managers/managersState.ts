@@ -1,4 +1,4 @@
-import {Manager} from "./managersTypes";
+import { Manager } from './managersTypes';
 
 export type ManagersState = Manager[];
 

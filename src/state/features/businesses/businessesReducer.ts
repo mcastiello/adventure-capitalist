@@ -1,4 +1,4 @@
-import {BusinessesState, defaultBusinessState} from './businessesState';
+import { BusinessesState, defaultBusinessState } from './businessesState';
 import {
   ADD_BUSINESS,
   BusinessesActions,
@@ -7,7 +7,7 @@ import {
   SET_BUSINESS_MANAGED,
   UPDATE_PROFIT
 } from './businessesActions';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function businessesReducer(state: BusinessesState = defaultBusinessState, action: BusinessesActions): BusinessesState {
   switch (action.type) {
