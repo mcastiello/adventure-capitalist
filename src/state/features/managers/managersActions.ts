@@ -13,7 +13,7 @@ export interface AddManagerAction {
   name: string;
   managerType: ManagerType;
 }
-export const addBusiness = (name: string, managerType: ManagerType): AddManagerAction => ({
+export const addManager = (name: string, managerType: ManagerType): AddManagerAction => ({
   type: ADD_MANAGER,
   name,
   managerType

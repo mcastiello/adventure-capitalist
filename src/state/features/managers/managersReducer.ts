@@ -9,6 +9,7 @@ import {
   UPDATE_MANAGER_PROFIT
 } from './managersActions';
 import { v4 as uuidv4 } from 'uuid';
+import { Managers } from './managersTypes';
 
 export default function managersReducer(state: ManagersState = defaultManagersState, action: ManagersActions): ManagersState {
   switch (action.type) {
@@ -41,7 +42,7 @@ export default function managersReducer(state: ManagersState = defaultManagersSt
       });
     case ADD_MANAGED_BUSINESS:
       return state.map((manager) => {
-        if (manager.id === action.id) {
+        if (manager.id === action.id && manager.managedBusinesses.length < Managers[manager.type].maxNumberOfBusinesses) {
           manager = { ...manager, managedBusinesses: [...manager.managedBusinesses, action.business] };
         }
         return manager;

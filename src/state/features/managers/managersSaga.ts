@@ -7,10 +7,11 @@ import {
   updateManagerProfit
 } from './managersActions';
 import { setBusinessManaged, updateProfit } from '../businesses/businessesActions';
-import { SystemState } from '../index';
 import { Manager, Managers } from './managersTypes';
 import { Business, Businesses, BusinessID } from '../businesses/businessesTypes';
 import { sleep } from '../../../helpers';
+import { getManagers } from './managersSelectors';
+import { getBusinesses } from '../businesses/businessesSelectors';
 
 export default function* managersSaga() {
   yield takeEvery([ADD_MANAGED_BUSINESS, REMOVE_MANAGED_BUSINESS], updateBusinessStatus);
@@ -29,7 +30,7 @@ export function* manageTask() {
 }
 
 export function* manageBusinesses() {
-  const managers: Manager[] = yield select((state: SystemState) => state.managers);
+  const managers: Manager[] = yield select(getManagers);
 
   for (let i = 0, ii = managers.length; i < ii; i++) {
     yield collectFromManagedBusinesses(managers[i], managers[i].managedBusinesses);
@@ -40,7 +41,7 @@ export function* collectFromManagedBusinesses(manager: Manager, businesses: Busi
   const time = Date.now();
   const managerDefinition = Managers[manager.type];
   const amountRatio = 1 - managerDefinition.profitCut / 100;
-  const businessList: Business[] = yield select((state: SystemState) => state.businesses);
+  const businessList: Business[] = yield select(getBusinesses);
   const managed = businesses.map((business) => businessList.find((element) => element.id === business));
   let collectedAmount = 0;
 
@@ -51,7 +52,7 @@ export function* collectFromManagedBusinesses(manager: Manager, businesses: Busi
       const interval = Businesses[business.type].profitInterval * managerDefinition.timeBonus;
       const collections = Math.floor(elapsed / interval);
       if (collections > 0) {
-        const lastCollection = Math.floor(business.lastProfitCollected + collections * interval);
+        const lastCollection = Math.floor(business.lastProfitCollected + collections * interval * 1000);
         const amount = Businesses[business.type].profitAmount * collections * amountRatio;
 
         yield put(updateProfit(business.id, amount, lastCollection));
