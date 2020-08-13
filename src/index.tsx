@@ -25,7 +25,7 @@ const GameContainer: React.FC = () => {
         {({ width, height }) => {
           dispatch(setSize(width, height));
 
-          return <Game/>;
+          return <Game />;
         }}
       </AutoSizer>
     </Background>
