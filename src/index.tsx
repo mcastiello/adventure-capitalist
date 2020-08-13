@@ -1,41 +1,35 @@
+import 'framework7/css/framework7.bundle.min.css';
+import 'framework7-icons/css/framework7-icons.css';
+import Framework7 from 'framework7/framework7-lite.esm.bundle';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { setSize } from './state/features/navigation/navigationActions';
+import Framework7React, { F7App } from 'framework7-react';
 import store from './state/store';
 import styled from 'styled-components';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import Game from './views/Game';
 import './index.css';
 
+Framework7.use(Framework7React);
+
 const Background = styled.div`
   width: 100%;
   height: 100%;
-  background: #343d41;
+  background: var(--game-background-color);
   position: absolute;
 `;
-
-const GameContainer: React.FC = () => {
-  const dispatch = useDispatch();
-  return (
-    <Background>
-      <AutoSizer>
-        {({ width, height }) => {
-          dispatch(setSize(width, height));
-
-          return <Game />;
-        }}
-      </AutoSizer>
-    </Background>
-  );
-};
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <GameContainer />
+      <F7App>
+        <Background>
+          <AutoSizer>{(props) => <Game {...props} />}</AutoSizer>
+        </Background>
+      </F7App>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
