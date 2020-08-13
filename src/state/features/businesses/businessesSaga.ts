@@ -1,12 +1,42 @@
-import { select, put, takeEvery } from 'redux-saga/effects';
-import { COLLECT_PROFIT, CollectProfitAction, setBusinessManaged, updateProfit } from './businessesActions';
+import { select, put, fork, call, takeEvery } from 'redux-saga/effects';
+import {
+  COLLECT_PROFIT,
+  CollectProfitAction,
+  setBusinessManaged,
+  setCollectionAvailable,
+  updateProfit
+} from './businessesActions';
 import { Business, Businesses, BusinessID } from './businessesTypes';
 import { REMOVE_MANAGER } from '../managers/managersActions';
 import { getBusinesses, getFlaggedUnmanagedBusinesses } from './businessesSelectors';
+import { sleep } from '../../../helpers';
 
 export default function* businessesSaga() {
   yield takeEvery(COLLECT_PROFIT, collectBusinessProfit);
   yield takeEvery(REMOVE_MANAGER, resetManagedFlag);
+  yield fork(collectionTask);
+}
+
+export function* collectionTask() {
+  while (true) {
+    yield call(sleep, 250);
+    yield updateCollectionStatus();
+  }
+}
+
+export function* updateCollectionStatus() {
+  const businesses: Business[] = yield select(getBusinesses);
+  const time = Date.now();
+
+  for (let i=0, ii=businesses.length; i<ii; i++) {
+    const business = businesses[i];
+    const definition = Businesses[business.type];
+    const elapsed = time - business.lastProfitCollected;
+
+    if (!business.managed && elapsed >= definition.profitInterval * 1000) {
+      yield put(setCollectionAvailable(business.id));
+    }
+  }
 }
 
 export function* collectBusinessProfit(action: CollectProfitAction) {

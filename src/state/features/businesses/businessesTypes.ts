@@ -26,6 +26,7 @@ export type Business = {
   lastProfitCollected: number;
   totalProfits: number;
   managed: boolean;
+  collectionAvailable: boolean;
 };
 
 export const Businesses: Record<BusinessType, BusinessDefinition> = {

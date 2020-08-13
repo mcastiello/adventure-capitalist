@@ -1,5 +1,5 @@
 import { BusinessType } from './businessesTypes';
-import { addBusiness, removeBusiness, renameBusiness, setBusinessManaged, updateProfit } from './businessesActions';
+import { addBusiness, removeBusiness, renameBusiness, setBusinessManaged, setCollectionAvailable, updateProfit } from './businessesActions';
 import businessesReducer from './businessesReducer';
 import { defaultBusinessState } from './businessesState';
 
@@ -75,4 +75,18 @@ describe('Test businessesReducer', () => {
     expect(newState[0].lastProfitCollected).toBe(collection);
     expect(newState[0].id).toBe(business.id);
   });
-})
+  it('should update the business profits', () => {
+    const name = 'Coffee Addiction';
+    const type = BusinessType.CoffeeShop;
+    const action = addBusiness(name, type);
+
+    const state = businessesReducer(defaultBusinessState, action);
+
+    const business = state[0];
+    const update = setCollectionAvailable(business.id);
+    const newState = businessesReducer(state, update);
+
+    expect(newState[0].collectionAvailable).toBe(true);
+    expect(newState[0].id).toBe(business.id);
+  });
+});

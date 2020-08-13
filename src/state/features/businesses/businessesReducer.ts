@@ -5,6 +5,7 @@ import {
   REMOVE_BUSINESS,
   RENAME_BUSINESS,
   SET_BUSINESS_MANAGED,
+  SET_COLLECTION_AVAILABLE,
   UPDATE_PROFIT
 } from './businessesActions';
 import { v4 as uuidv4 } from 'uuid';
@@ -20,7 +21,8 @@ export default function businessesReducer(state: BusinessesState = defaultBusine
           type: action.businessType,
           lastProfitCollected: Date.now(),
           totalProfits: 0,
-          managed: false
+          managed: false,
+          collectionAvailable: false
         }
       ];
     case REMOVE_BUSINESS:
@@ -38,7 +40,8 @@ export default function businessesReducer(state: BusinessesState = defaultBusine
           business = {
             ...business,
             totalProfits: business.totalProfits + action.amount,
-            lastProfitCollected: action.collectionTime || Date.now()
+            lastProfitCollected: action.collectionTime || Date.now(),
+            collectionAvailable: false
           };
         }
         return business;
@@ -49,6 +52,16 @@ export default function businessesReducer(state: BusinessesState = defaultBusine
           business = {
             ...business,
             managed: action.value
+          };
+        }
+        return business;
+      });
+    case SET_COLLECTION_AVAILABLE:
+      return state.map((business) => {
+        if (business.id === action.id) {
+          business = {
+            ...business,
+            collectionAvailable: true
           };
         }
         return business;

@@ -1,8 +1,8 @@
-import { addBusiness, collectProfit, setBusinessManaged, updateProfit } from './businessesActions';
+import { addBusiness, collectProfit, setBusinessManaged, setCollectionAvailable, updateProfit } from './businessesActions';
 import { Businesses, BusinessType } from './businessesTypes';
 import { defaultSystemState, rootReducer } from '../index';
 import { expectSaga } from 'redux-saga-test-plan';
-import { collectBusinessProfit, resetManagedFlag } from './businessesSaga';
+import { collectBusinessProfit, resetManagedFlag, updateCollectionStatus } from './businessesSaga';
 import { getBusinesses, getFlaggedUnmanagedBusinesses } from './businessesSelectors';
 import { ManagerType } from '../managers/managersTypes';
 import { addManagedBusiness, addManager, removeManager } from '../managers/managersActions';
@@ -50,5 +50,19 @@ describe('Test businessesSaga', () => {
     state = rootReducer(state, remove);
 
     expectSaga(resetManagedFlag).withState(state).select(getFlaggedUnmanagedBusinesses).put(setBusinessManaged(businessId, false)).run();
+  });
+  it('should set the collection status as available after the time interval is elapsed', () => {
+    const businessType = BusinessType.CoffeeShop;
+    const newBusiness = addBusiness('test', businessType);
+    const interval = Businesses[businessType].profitInterval * 1000;
+
+    let state = rootReducer(defaultSystemState, newBusiness);
+
+    const businessId = state.businesses[0].id;
+    const profit = updateProfit(businessId, 0, Date.now() - interval);
+
+    state = rootReducer(state, profit);
+
+    expectSaga(updateCollectionStatus).withState(state).select(getBusinesses).put(setCollectionAvailable(businessId)).run();
   });
 });

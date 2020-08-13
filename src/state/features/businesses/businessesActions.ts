@@ -6,6 +6,7 @@ export const RENAME_BUSINESS = 'BUSINESSES/RENAME';
 export const COLLECT_PROFIT = 'BUSINESSES/COLLECT';
 export const UPDATE_PROFIT = 'BUSINESSES/UPDATE_PROFIT';
 export const SET_BUSINESS_MANAGED = 'BUSINESSES/SET_MANAGED';
+export const SET_COLLECTION_AVAILABLE = 'BUSINESSES/SET_COLLECTION_AVAILABLE';
 
 export interface AddBusinessAction {
   type: typeof ADD_BUSINESS;
@@ -71,10 +72,20 @@ export const setBusinessManaged = (id: BusinessID, value: boolean): SetBusinessM
   value
 });
 
+export interface SetCollectionAvailableAction {
+  type: typeof SET_COLLECTION_AVAILABLE;
+  id: BusinessID;
+}
+export const setCollectionAvailable = (id: BusinessID): SetCollectionAvailableAction => ({
+  type: SET_COLLECTION_AVAILABLE,
+  id
+});
+
 export type BusinessesActions =
   | AddBusinessAction
   | RemoveBusinessAction
   | RenameBusinessAction
   | CollectProfitAction
   | UpdateProfitAction
-  | SetBusinessManagedAction;
+  | SetBusinessManagedAction
+  | SetCollectionAvailableAction;
