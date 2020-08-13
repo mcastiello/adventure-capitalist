@@ -43,4 +43,4 @@ describe('Test navigationReducer', () => {
 
     expect(state.menuOpen).toBe(false);
   });
-})
+});
