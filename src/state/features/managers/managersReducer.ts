@@ -9,7 +9,7 @@ import {
   UPDATE_MANAGER_PROFIT
 } from './managersActions';
 import { v4 as uuidv4 } from 'uuid';
-import { Managers } from './managersTypes';
+import { Managers } from '../../../definitions/Managers';
 
 export default function managersReducer(state: ManagersState = defaultManagersState, action: ManagersActions): ManagersState {
   switch (action.type) {

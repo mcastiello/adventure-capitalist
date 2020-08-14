@@ -10,6 +10,7 @@ import GameMenu from './pages/GameMenu';
 import BusinessesPage from './pages/Businesses';
 import ManagersPage from './pages/Managers';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import AddItem from './components/AddItem';
 
 const MIN_PAGE_WIDTH = 900;
 const HEADER_HEIGHT = 40;
@@ -32,6 +33,8 @@ const Title = styled.div`
   position: absolute;
   display: inline-block;
   color: white;
+  min-width: 300px;
+  text-align: center;
   left: 50%;
   transform: translateX(-50%);
   font-size: 24px;
@@ -76,8 +79,18 @@ const Game: React.FC<GameProps> = ({ width, height }) => {
       )}
       <GameContainer main style={{ width: `calc(100% - ${width >= MIN_PAGE_WIDTH ? 'var(--f7-panel-width)' : '0px'})` }}>
         <Header>
-          {width < MIN_PAGE_WIDTH && (<FontAwesomeIcon icon={faBars} onClick={openMenuCallback} size={'2x'} style={{cursor: 'pointer', margin: '5px'}} fontSize={38} color={'white'} />)}
+          {width < MIN_PAGE_WIDTH && (
+            <FontAwesomeIcon
+              icon={faBars}
+              onClick={openMenuCallback}
+              size={'2x'}
+              style={{ cursor: 'pointer', margin: '5px' }}
+              fontSize={38}
+              color={'white'}
+            />
+          )}
           <Title>Adventure Capitalist</Title>
+          <AddItem />
         </Header>
         {page === GamePage.Businesses ? (
           <BusinessesPage height={height - HEADER_HEIGHT} />

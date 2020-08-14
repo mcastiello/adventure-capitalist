@@ -40,7 +40,7 @@ export default function businessesReducer(state: BusinessesState = defaultBusine
           business = {
             ...business,
             totalProfits: business.totalProfits + action.amount,
-            lastProfitCollected: action.collectionTime || Date.now(),
+            lastProfitCollected: action.collectionTime,
             collectionAvailable: false
           };
         }

@@ -2,8 +2,8 @@ import { put, takeEvery } from 'redux-saga/effects';
 import { ADD_BUSINESS, AddBusinessAction, UPDATE_PROFIT, UpdateProfitAction } from '../businesses/businessesActions';
 import { updateWallet } from './userActions';
 import { ADD_MANAGER, AddManagerAction } from '../managers/managersActions';
-import { Managers } from '../managers/managersTypes';
-import { Businesses } from '../businesses/businessesTypes';
+import { Managers } from '../../../definitions/Managers';
+import { Businesses } from '../../../definitions/Businesses';
 
 export default function* userSaga() {
   yield takeEvery(UPDATE_PROFIT, updateWalletProfits);

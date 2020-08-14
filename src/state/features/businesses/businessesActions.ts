@@ -52,9 +52,9 @@ export interface UpdateProfitAction {
   type: typeof UPDATE_PROFIT;
   id: BusinessID;
   amount: number;
-  collectionTime?: number;
+  collectionTime: number;
 }
-export const updateProfit = (id: BusinessID, amount: number, collectionTime?: number): UpdateProfitAction => ({
+export const updateProfit = (id: BusinessID, amount: number, collectionTime: number): UpdateProfitAction => ({
   type: UPDATE_PROFIT,
   id,
   amount,

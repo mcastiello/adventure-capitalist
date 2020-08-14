@@ -7,11 +7,13 @@ import {
   updateManagerProfit
 } from './managersActions';
 import { setBusinessManaged, updateProfit } from '../businesses/businessesActions';
-import { Manager, Managers } from './managersTypes';
-import { Business, Businesses, BusinessID } from '../businesses/businessesTypes';
+import { Manager } from './managersTypes';
+import { Business, BusinessID } from '../businesses/businessesTypes';
 import { sleep } from '../../../helpers';
 import { getManagers } from './managersSelectors';
 import { getBusinesses } from '../businesses/businessesSelectors';
+import { Managers } from '../../../definitions/Managers';
+import { Businesses } from '../../../definitions/Businesses';
 
 export default function* managersSaga() {
   yield takeEvery([ADD_MANAGED_BUSINESS, REMOVE_MANAGED_BUSINESS], updateBusinessStatus);

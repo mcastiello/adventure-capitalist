@@ -2,14 +2,16 @@ import { addBusiness, updateProfit } from '../businesses/businessesActions';
 import { expectSaga } from 'redux-saga-test-plan';
 import { updateWalletAfterBuyingNewBusiness, updateWalletAfterHiringManager, updateWalletProfits } from './userSaga';
 import { updateWallet } from './userActions';
-import { Managers, ManagerType } from '../managers/managersTypes';
+import { ManagerType } from '../managers/managersTypes';
 import { addManager } from '../managers/managersActions';
-import { Businesses, BusinessType } from '../businesses/businessesTypes';
+import { BusinessType } from '../businesses/businessesTypes';
+import { Managers } from '../../../definitions/Managers';
+import { Businesses } from '../../../definitions/Businesses';
 
 describe('Test userSaga', () => {
   it('should bank the business profits into the wallet', () => {
     const profit = 10;
-    const action = updateProfit('test', profit);
+    const action = updateProfit('test', profit, Date.now());
 
     return expectSaga(updateWalletProfits, action).put(updateWallet(profit)).run();
   });

@@ -2,11 +2,13 @@ import { addManagedBusiness, addManager, removeManagedBusiness, updateManagerPro
 import { expectSaga } from 'redux-saga-test-plan';
 import { manageBusinesses, updateBusinessStatus } from './managersSaga';
 import { addBusiness, setBusinessManaged, updateProfit } from '../businesses/businessesActions';
-import { Businesses, BusinessType } from '../businesses/businessesTypes';
-import { Managers, ManagerType } from './managersTypes';
+import { BusinessType } from '../businesses/businessesTypes';
+import { ManagerType } from './managersTypes';
 import { defaultSystemState, rootReducer } from '../index';
 import { getManagers } from './managersSelectors';
 import { getBusinesses } from '../businesses/businessesSelectors';
+import { Businesses } from '../../../definitions/Businesses';
+import { Managers } from '../../../definitions/Managers';
 
 describe('Test managersSaga', () => {
   Date.now = jest.fn().mockReturnValue(100000);
