@@ -1,11 +1,13 @@
 import { BusinessID } from '../businesses/businessesTypes';
+import React, { ReactNode } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faUserGraduate, faUserTie, faUserNinja } from '@fortawesome/free-solid-svg-icons';
 
 export enum ManagerType {
   Clerk = 'clerk',
   JuniorManager = 'junior_manager',
   SeniorManager = 'senior_manager',
-  Entrepreneur = 'entrepreneur',
-  MasterOfFinance = 'master_of_finance'
+  CEO = 'ceo'
 }
 
 export type ManagerDefinition = {
@@ -44,16 +46,17 @@ export const Managers: Record<ManagerType, ManagerDefinition> = {
     maxNumberOfBusinesses: 5,
     cost: 500
   },
-  [ManagerType.Entrepreneur]: {
+  [ManagerType.CEO]: {
     profitCut: 25,
     timeBonus: 0.75,
     maxNumberOfBusinesses: 25,
     cost: 2000
-  },
-  [ManagerType.MasterOfFinance]: {
-    profitCut: 35,
-    timeBonus: 0.5,
-    maxNumberOfBusinesses: 100,
-    cost: 10000
   }
+};
+
+export const ManagerIcons: Record<ManagerType, ReactNode> = {
+  [ManagerType.Clerk]: <FontAwesomeIcon icon={faUserNinja} />,
+  [ManagerType.JuniorManager]: <FontAwesomeIcon icon={faUserGraduate} />,
+  [ManagerType.SeniorManager]: <FontAwesomeIcon icon={faUser} />,
+  [ManagerType.CEO]: <FontAwesomeIcon icon={faUserTie} />
 };

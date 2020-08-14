@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import { SystemState } from '../state/features';
 import { GameProps } from './GameProps';
 import styled from 'styled-components';
-import { F7Link, F7Panel, F7View, F7Views } from 'framework7-react';
+import { F7Panel, F7View, F7Views } from 'framework7-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { GamePage } from '../state/features/navigation/navigationTypes';
 import GameMenu from './pages/GameMenu';
 import BusinessesPage from './pages/Businesses';
 import ManagersPage from './pages/Managers';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const MIN_PAGE_WIDTH = 900;
 const HEADER_HEIGHT = 40;
@@ -74,7 +76,7 @@ const Game: React.FC<GameProps> = ({ width, height }) => {
       )}
       <GameContainer main style={{ width: `calc(100% - ${width >= MIN_PAGE_WIDTH ? 'var(--f7-panel-width)' : '0px'})` }}>
         <Header>
-          {width < MIN_PAGE_WIDTH && (<F7Link iconF7={'bars'} onClick={openMenuCallback} color={'white'} iconSize={38}/>)}
+          {width < MIN_PAGE_WIDTH && (<FontAwesomeIcon icon={faBars} onClick={openMenuCallback} size={'2x'} style={{cursor: 'pointer', margin: '5px'}} fontSize={38} color={'white'} />)}
           <Title>Adventure Capitalist</Title>
         </Header>
         {page === GamePage.Businesses ? (

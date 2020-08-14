@@ -1,5 +1,4 @@
 import 'framework7/css/framework7.bundle.min.css';
-import 'framework7-icons/css/framework7-icons.css';
 import Framework7 from 'framework7/framework7-lite.esm.bundle';
 
 import React from 'react';

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/uuid": "^8.3.0",
     "@types/node": "^12.12.54",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
@@ -23,9 +24,11 @@
     "redux-saga-test-plan": "^4.0.0-rc.3"
   },
   "dependencies": {
-    "@types/uuid": "^8.3.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "framework7": "^5.7.2",
-    "framework7-icons": "^3.0.0",
     "framework7-react": "^5.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
