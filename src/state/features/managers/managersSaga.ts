@@ -36,7 +36,7 @@ export function* updateManagesBusinessStatus(action: RemoveBusinessAction) {
 
 export function* manageTask() {
   while (true) {
-    yield call(sleep, 1000);
+    yield call(sleep, 100);
     yield manageBusinesses();
   }
 }

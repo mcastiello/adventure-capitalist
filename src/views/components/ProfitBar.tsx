@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getDelayValue } from '../../helpers';
 import { ProfitBarProps } from '../GameProps';
@@ -47,17 +47,15 @@ const ProgressBar = styled.div`
 const ProfitBar: React.FC<ProfitBarProps> = ({ lastCollection, interval }) => {
   const [animationDelay, setAnimationDelay] = useState(getDelayValue(lastCollection));
   const [animationClass, setAnimationClass] = useState(ANIMATION_CLASS);
-  const resetAnimationClass = useCallback(() => setAnimationClass(''), []);
 
   useEffect(() => {
     const delay = getDelayValue(lastCollection);
     setAnimationDelay(delay);
-    if (Math.abs(delay) < interval) {
-      setAnimationClass(ANIMATION_CLASS);
-    } else {
-      setAnimationClass('');
-    }
-  }, [lastCollection, interval]);
+
+    // Restarting the CSS animation
+    setAnimationClass('');
+    setTimeout(() => setAnimationClass(ANIMATION_CLASS), 5);
+  }, [lastCollection]);
 
   return (
     <ProgressBarContainer>
@@ -67,7 +65,6 @@ const ProfitBar: React.FC<ProfitBarProps> = ({ lastCollection, interval }) => {
           animationDuration: `${interval}s`,
           animationDelay: `${animationDelay}s`
         }}
-        onAnimationEnd={resetAnimationClass}
       />
     </ProgressBarContainer>
   );

@@ -23,7 +23,7 @@ export default function* businessesSaga() {
 
 export function* collectionTask() {
   while (true) {
-    yield call(sleep, 250);
+    yield call(sleep, 100);
     yield updateCollectionStatus();
   }
 }
