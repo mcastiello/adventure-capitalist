@@ -19,7 +19,7 @@ export function* updateWalletAfterHiringManager(action: AddManagerAction) {
   const definition = Managers[action.managerType];
 
   if (definition) {
-    yield put(updateWallet(0 - definition.cost));
+    yield put(updateWallet(-definition.cost));
   }
 }
 
@@ -27,6 +27,6 @@ export function* updateWalletAfterBuyingNewBusiness(action: AddBusinessAction) {
   const definition = Businesses[action.businessType];
 
   if (definition) {
-    yield put(updateWallet(0 - definition.cost));
+    yield put(updateWallet(-definition.cost));
   }
 }

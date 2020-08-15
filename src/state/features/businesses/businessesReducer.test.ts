@@ -1,5 +1,13 @@
-import { BusinessType } from './businessesTypes';
-import { addBusiness, removeBusiness, renameBusiness, setBusinessManaged, setCollectionAvailable, updateProfit } from './businessesActions';
+import { BusinessLevel, BusinessType } from './businessesTypes';
+import {
+  addBusiness,
+  removeBusiness,
+  renameBusiness,
+  setBusinessLevel,
+  setBusinessManaged,
+  setCollectionAvailable,
+  updateProfit
+} from './businessesActions';
 import businessesReducer from './businessesReducer';
 import { defaultBusinessState } from './businessesState';
 
@@ -58,6 +66,21 @@ describe('Test businessesReducer', () => {
     expect(newState[0].managed).toBe(true);
     expect(newState[0].id).toBe(business.id);
   });
+  it('should set the new business level', () => {
+    const name = 'Coffee Addiction';
+    const type = BusinessType.CoffeeShop;
+    const level = BusinessLevel.Three;
+    const action = addBusiness(name, type);
+
+    const state = businessesReducer(defaultBusinessState, action);
+
+    const business = state[0];
+    const setLevel = setBusinessLevel(business.id, level);
+    const newState = businessesReducer(state, setLevel);
+
+    expect(newState[0].level).toBe(level);
+    expect(newState[0].id).toBe(business.id);
+  });
   it('should update the business profits', () => {
     const name = 'Coffee Addiction';
     const type = BusinessType.CoffeeShop;
@@ -74,6 +97,7 @@ describe('Test businessesReducer', () => {
     expect(newState[0].totalProfits).toBe(profit);
     expect(newState[0].lastProfitCollected).toBe(collection);
     expect(newState[0].id).toBe(business.id);
+    expect(newState[0].level).toBe(BusinessLevel.One);
   });
   it('should update the business profits', () => {
     const name = 'Coffee Addiction';

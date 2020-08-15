@@ -14,3 +14,5 @@ export const formatTime = (value: number, useMilliseconds = false) => {
 
   return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 };
+
+export const getDelayValue = (lastCollection: number) => Math.round((lastCollection - Date.now()) / 1000);

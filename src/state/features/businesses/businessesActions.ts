@@ -1,4 +1,4 @@
-import { BusinessID, BusinessType } from './businessesTypes';
+import { BusinessID, BusinessLevel, BusinessType } from './businessesTypes';
 
 export const ADD_BUSINESS = 'BUSINESSES/ADD';
 export const REMOVE_BUSINESS = 'BUSINESSES/REMOVE';
@@ -7,6 +7,8 @@ export const COLLECT_PROFIT = 'BUSINESSES/COLLECT';
 export const UPDATE_PROFIT = 'BUSINESSES/UPDATE_PROFIT';
 export const SET_BUSINESS_MANAGED = 'BUSINESSES/SET_MANAGED';
 export const SET_COLLECTION_AVAILABLE = 'BUSINESSES/SET_COLLECTION_AVAILABLE';
+export const SET_BUSINESS_LEVEL = 'BUSINESSES/SET_LEVEL';
+export const UPGRADE_BUSINESS = 'BUSINESSES/UPGRADE';
 
 export interface AddBusinessAction {
   type: typeof ADD_BUSINESS;
@@ -81,6 +83,26 @@ export const setCollectionAvailable = (id: BusinessID): SetCollectionAvailableAc
   id
 });
 
+export interface SetBusinessLevelAction {
+  type: typeof SET_BUSINESS_LEVEL;
+  id: BusinessID;
+  level: BusinessLevel;
+}
+export const setBusinessLevel = (id: BusinessID, level: BusinessLevel): SetBusinessLevelAction => ({
+  type: SET_BUSINESS_LEVEL,
+  id,
+  level
+});
+
+export interface UpgradeBusinessAction {
+  type: typeof UPGRADE_BUSINESS;
+  id: BusinessID;
+}
+export const upgradeBusiness = (id: BusinessID): UpgradeBusinessAction => ({
+  type: UPGRADE_BUSINESS,
+  id
+});
+
 export type BusinessesActions =
   | AddBusinessAction
   | RemoveBusinessAction
@@ -88,4 +110,6 @@ export type BusinessesActions =
   | CollectProfitAction
   | UpdateProfitAction
   | SetBusinessManagedAction
-  | SetCollectionAvailableAction;
+  | SetCollectionAvailableAction
+  | SetBusinessLevelAction
+  | UpgradeBusinessAction;

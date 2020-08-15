@@ -12,7 +12,7 @@ export type ItemDataValue<T extends string> = {
   icon: ReactNode;
 };
 
-export type AddProps<T extends string, S extends BaseItemType> = {
+export type ItemProps<T extends string, S extends BaseItemType> = {
   open: boolean;
   onCreate: (name: string, type: T) => void;
   wallet: number;

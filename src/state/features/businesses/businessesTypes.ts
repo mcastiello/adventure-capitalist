@@ -11,12 +11,26 @@ export enum BusinessType {
   FinanceCompany = 'finance_company'
 }
 
+export enum BusinessLevel {
+  One = 1,
+  Two = 2,
+  Three = 3,
+  Four = 4,
+  Five = 5
+}
+
 export type BusinessDefinition = {
   profitAmount: number;
   profitInterval: number;
   cost: number;
   typeName: string;
   description: string;
+};
+
+export type BusinessData = {
+  profitMultiplier: number;
+  intervalMultiplier: number;
+  upgradeCostMultiplier?: number;
 };
 
 export type BusinessID = string;
@@ -29,4 +43,11 @@ export type Business = {
   totalProfits: number;
   managed: boolean;
   collectionAvailable: boolean;
+  level: BusinessLevel;
 };
+
+export type BusinessDetails = Business & {
+  profit: number;
+  interval: number;
+  upgradeCost?: number;
+}

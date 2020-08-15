@@ -1,4 +1,9 @@
-import { BusinessDefinition, BusinessType } from '../state/features/businesses/businessesTypes';
+import {
+  BusinessData,
+  BusinessDefinition,
+  BusinessLevel,
+  BusinessType
+} from '../state/features/businesses/businessesTypes';
 
 export const Businesses: Record<BusinessType, BusinessDefinition> = {
   [BusinessType.FastFood]: {
@@ -102,3 +107,30 @@ export const Businesses: Record<BusinessType, BusinessDefinition> = {
     cost: 10000
   }
 };
+
+export const BusinessLevels: Record<BusinessLevel, BusinessData> = {
+  [BusinessLevel.One]: {
+    intervalMultiplier: 1,
+    profitMultiplier: 1,
+    upgradeCostMultiplier: 1.1
+  },
+  [BusinessLevel.Two]: {
+    intervalMultiplier: 0.9,
+    profitMultiplier: 1.25,
+    upgradeCostMultiplier: 1.2
+  },
+  [BusinessLevel.Three]: {
+    intervalMultiplier: 0.8,
+    profitMultiplier: 1.5,
+    upgradeCostMultiplier: 1.3
+  },
+  [BusinessLevel.Four]: {
+    intervalMultiplier: 0.7,
+    profitMultiplier: 1.75,
+    upgradeCostMultiplier: 1.5
+  },
+  [BusinessLevel.Five]: {
+    intervalMultiplier: 0.5,
+    profitMultiplier: 2,
+  }
+}

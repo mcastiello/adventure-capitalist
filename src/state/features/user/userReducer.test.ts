@@ -1,4 +1,4 @@
-import { renameUser, updateWallet } from './userActions';
+import { updateWallet } from './userActions';
 import userReducer from './userReducer';
 import { defaultUserState } from './userState';
 
@@ -10,14 +10,5 @@ describe('Test userReducer', () => {
     const state = userReducer(defaultUserState, action);
 
     expect(state.wallet).toBe(defaultUserState.wallet + amount);
-  });
-
-  it('should set the user name', () => {
-    const newName = 'My Name';
-    const action = renameUser(newName);
-
-    const state = userReducer(defaultUserState, action);
-
-    expect(state.name).toBe(newName);
   });
 });

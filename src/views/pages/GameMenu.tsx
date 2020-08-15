@@ -9,6 +9,7 @@ import { formatCurrency } from '../../helpers';
 import { F7List, F7ListItem } from 'framework7-react';
 import { setPage } from '../../state/features/navigation/navigationActions';
 import { GamePage } from '../../state/features/navigation/navigationTypes';
+import { getWalletAmount } from '../../state/features/user/userSelector';
 
 const UserIcon = styled(FontAwesomeIcon)`
   font-size: 240px;
@@ -32,7 +33,7 @@ const LinkList = styled(F7List)`
 `;
 
 const GameMenu: React.FC<MenuProps> = () => {
-  const { name, wallet } = useSelector((state: SystemState) => state.user);
+  const wallet = useSelector(getWalletAmount);
   const { page } = useSelector((state: SystemState) => state.navigation);
   const dispatch = useDispatch();
   const gotToBusinesses = useCallback(() => dispatch(setPage(GamePage.Businesses)), [dispatch]);
@@ -40,9 +41,6 @@ const GameMenu: React.FC<MenuProps> = () => {
   return (
     <div>
       <UserIcon icon={faUserCircle} />
-      <DataLine>
-        User: <span>{name}</span>
-      </DataLine>
       <DataLine>
         Profits: <span>{formatCurrency(wallet)}</span>
       </DataLine>

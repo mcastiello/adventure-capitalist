@@ -1,14 +1,4 @@
-export const RENAME_USER = 'USER/RENAME';
 export const UPDATE_WALLET = 'USER/UPDATE_WALLET';
-
-export interface RenameUserAction {
-  type: typeof RENAME_USER;
-  name: string;
-}
-export const renameUser = (name: string): RenameUserAction => ({
-  type: RENAME_USER,
-  name
-});
 
 export interface UpdateWalletAction {
   type: typeof UPDATE_WALLET;
@@ -19,4 +9,4 @@ export const updateWallet = (amount: number): UpdateWalletAction => ({
   amount
 });
 
-export type UserActions = RenameUserAction | UpdateWalletAction;
+export type UserActions = UpdateWalletAction;

@@ -7,7 +7,7 @@ export const Managers: Record<ManagerType, ManagerDefinition> = {
       'He is probably not interested in your business, he is there just for the small pay he gets ' +
       'but he will not make a big effort to improve your profits, in fact he will require more time ' +
       'to generate profits, but at list he will stay there while you are somewhere else.',
-    profitCut: 0.01,
+    profitCut: 0.5,
     timeBonus: 1.25,
     maxNumberOfBusinesses: 1,
     cost: 100
@@ -17,7 +17,7 @@ export const Managers: Record<ManagerType, ManagerDefinition> = {
     description:
       'He is probably just out of university and he is looking for a chance to prove himself, he ' +
       'will do is job as fas as you can and he will probably do it for free (he needs to improve his CV).',
-    profitCut: 1,
+    profitCut: 2.5,
     timeBonus: 1,
     maxNumberOfBusinesses: 1,
     cost: 200
@@ -27,7 +27,7 @@ export const Managers: Record<ManagerType, ManagerDefinition> = {
     description:
       'He knows how to do his job, he is faster than you are and he can handle a few tasks at the ' +
       'same time, but quality comes at a price and he is very interested in your profits.',
-    profitCut: 10,
+    profitCut: 15,
     timeBonus: 0.85,
     maxNumberOfBusinesses: 5,
     cost: 500

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { SystemState } from '../state/features';
 import { GameProps } from './GameProps';
@@ -66,6 +66,10 @@ const Game: React.FC<GameProps> = ({ width, height }) => {
   const openMenuCallback = useCallback(() => setMenuOpen(true), []);
   const closeMenuCallback = useCallback(() => setMenuOpen(false), []);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [page]);
+
   return (
     <GameArea>
       {width >= MIN_PAGE_WIDTH ? (
@@ -93,9 +97,9 @@ const Game: React.FC<GameProps> = ({ width, height }) => {
           <AddItem />
         </Header>
         {page === GamePage.Businesses ? (
-          <BusinessesPage height={height - HEADER_HEIGHT} />
+          <BusinessesPage />
         ) : (
-          <ManagersPage height={height - HEADER_HEIGHT} />
+          <ManagersPage />
         )}
       </GameContainer>
     </GameArea>

@@ -1,14 +1,26 @@
-import { addBusiness, collectProfit, setBusinessManaged, setCollectionAvailable, updateProfit } from './businessesActions';
-import { BusinessType } from './businessesTypes';
+import {
+  addBusiness,
+  collectProfit,
+  setBusinessLevel,
+  setBusinessManaged,
+  setCollectionAvailable,
+  updateProfit,
+  upgradeBusiness
+} from './businessesActions';
+import { BusinessLevel, BusinessType } from './businessesTypes';
 import { defaultSystemState, rootReducer } from '../index';
 import { expectSaga } from 'redux-saga-test-plan';
-import { collectBusinessProfit, resetManagedFlag, updateCollectionStatus } from './businessesSaga';
+import { collectBusinessProfit, resetManagedFlag, updateCollectionStatus, upgradeBusinessLevel } from './businessesSaga';
 import { getBusinesses, getFlaggedUnmanagedBusinesses } from './businessesSelectors';
 import { ManagerType } from '../managers/managersTypes';
 import { addManagedBusiness, addManager, removeManager } from '../managers/managersActions';
-import { Businesses } from '../../../definitions/Businesses';
+import { Businesses, BusinessLevels } from '../../../definitions/Businesses';
+import { getWalletAmount } from '../user/userSelector';
+import { updateWallet } from '../user/userActions';
 
 describe('Test businessesSaga', () => {
+  Date.now = jest.fn().mockReturnValue(100000);
+
   it('should collect the profit for a specific business', () => {
     const businessType = BusinessType.CoffeeShop;
     const newBusiness = addBusiness('test', businessType);
@@ -65,5 +77,23 @@ describe('Test businessesSaga', () => {
     state = rootReducer(state, profit);
 
     expectSaga(updateCollectionStatus).withState(state).select(getBusinesses).put(setCollectionAvailable(businessId)).run();
+  });
+  it('should set the collection status as available after the time interval is elapsed', () => {
+    const businessType = BusinessType.CoffeeShop;
+    const newBusiness = addBusiness('test', businessType);
+    const upgradeCost = Businesses[businessType].cost * (BusinessLevels[BusinessLevel.One].upgradeCostMultiplier || 1);
+
+    let state = rootReducer(defaultSystemState, newBusiness);
+
+    const businessId = state.businesses[0].id;
+    const upgrade = upgradeBusiness(businessId);
+
+    expectSaga(upgradeBusinessLevel, upgrade)
+      .withState(state)
+      .select(getBusinesses)
+      .select(getWalletAmount)
+      .put(updateWallet(-upgradeCost))
+      .put(setBusinessLevel(businessId, BusinessLevel.Two))
+      .run();
   });
 });

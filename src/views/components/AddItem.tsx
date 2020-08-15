@@ -12,15 +12,16 @@ import { BusinessIcons } from '../icons/BusinessIcons';
 import { addBusiness } from '../../state/features/businesses/businessesActions';
 import { ManagerType } from '../../state/features/managers/managersTypes';
 import { addManager } from '../../state/features/managers/managersActions';
-import { ItemDataValue } from './AddProps';
+import { ItemDataValue } from './ItemProps';
 import { Managers } from '../../definitions/Managers';
 import { ManagerIcons } from '../icons/ManagerIcons';
 import { formatCurrency, formatTime } from '../../helpers';
-import { AddItemButton } from './AddItemStyledComponents';
+import { AddItemButton } from './CommonStyledComponents';
+import { getWalletAmount } from '../../state/features/user/userSelector';
 
 const AddItem: React.FC = () => {
   const { page } = useSelector((state: SystemState) => state.navigation);
-  const { wallet } = useSelector((state: SystemState) => state.user);
+  const wallet = useSelector(getWalletAmount);
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
   const openModal = useCallback(() => setModalOpen(true), []);
@@ -71,7 +72,7 @@ const AddItem: React.FC = () => {
       icon: <FontAwesomeIcon icon={faPiggyBank} />
     },
     {
-      title: 'Managed Businesses',
+      title: 'Business Capacity',
       getValue: (type) => Managers[type].maxNumberOfBusinesses.toString(),
       icon: <FontAwesomeIcon icon={faCity} />
     },

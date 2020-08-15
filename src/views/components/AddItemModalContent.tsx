@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useCallback, useEffect, useState } from 'react';
-import { F7Button, F7List } from 'framework7-react';
-import { ItemDescription, ItemInputName, ItemName, ItemTitle, ListItem } from './AddItemStyledComponents';
-import { AddProps, BaseItemType, ItemData } from './AddProps';
+import { F7List } from 'framework7-react';
+import { ItemDescription, ItemInputName, ItemName, ItemTitle, ListItem, ListButton } from './CommonStyledComponents';
+import { ItemProps, BaseItemType, ItemData } from './ItemProps';
 
 const AddItemModalContent = <T extends string, S extends BaseItemType>({
   open,
@@ -12,7 +12,7 @@ const AddItemModalContent = <T extends string, S extends BaseItemType>({
   title,
   icons,
   dataValues
-}: AddProps<T, S>) => {
+}: ItemProps<T, S>) => {
   const [selectedType, setSelectedType] = useState<T>(defaultValue);
   const [name, setName] = useState('');
   const updateName = useCallback((event: SyntheticEvent) => {
@@ -74,9 +74,8 @@ const AddItemModalContent = <T extends string, S extends BaseItemType>({
           required
         />
       )}
-      <F7Button
+      <ListButton
         text={wallet < source[selectedType].cost ? 'Not enough funds' : 'Create'}
-        raised
         disabled={name.length === 0 || wallet < source[selectedType].cost}
         onClick={createItem}
       />
