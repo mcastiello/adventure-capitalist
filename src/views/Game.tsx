@@ -60,6 +60,13 @@ const GameContainer = styled(F7View)`
   position: relative;
 `;
 
+const PageContainer = styled.div`
+  height: calc(100% - ${HEADER_HEIGHT}px);
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+`;
+
 const Game: React.FC<GameProps> = ({ width, height }) => {
   const page = useSelector(getCurrentPage);
   const [open, setMenuOpen] = useState(false);
@@ -96,7 +103,7 @@ const Game: React.FC<GameProps> = ({ width, height }) => {
           <Title>Adventure Capitalist</Title>
           <AddItem />
         </Header>
-        {page === GamePage.Businesses ? <BusinessesPage /> : <ManagersPage />}
+        <PageContainer>{page === GamePage.Businesses ? <BusinessesPage /> : <ManagersPage />}</PageContainer>
       </GameContainer>
     </GameArea>
   );
