@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { SystemState } from '../index';
 import { BusinessDetails, BusinessID } from './businessesTypes';
-import { getManagers } from '../managers/managersSelectors';
+import { getManagedBusinesses, getManagers } from '../managers/managersSelectors';
 import { Managers } from '../../../definitions/Managers';
 import { Businesses, BusinessLevels } from '../../../definitions/Businesses';
 
@@ -37,15 +37,6 @@ export const getBusinesses = createSelector(
 );
 
 export const getUnmanagedBusinesses = createSelector(getBusinesses, (businesses) => businesses.filter((business) => !business.managed));
-
-export const getManagedBusinesses = createSelector(getManagers, (managers) => {
-  const result: BusinessID[] = [];
-  managers.forEach((manager) => {
-    result.push(...manager.managedBusinesses);
-  });
-
-  return result;
-});
 
 export const getFlaggedUnmanagedBusinesses = createSelector(getBusinesses, getManagedBusinesses, (businesses, managedBusinesses) => {
   return businesses

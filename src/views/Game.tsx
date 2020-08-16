@@ -11,6 +11,7 @@ import BusinessesPage from './pages/Businesses';
 import ManagersPage from './pages/Managers';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import AddItem from './components/AddItem';
+import { getCurrentPage } from '../state/features/navigation/navigationSelectors';
 
 const MIN_PAGE_WIDTH = 900;
 const HEADER_HEIGHT = 40;
@@ -61,7 +62,7 @@ const GameContainer = styled(F7View)`
 `;
 
 const Game: React.FC<GameProps> = ({ width, height }) => {
-  const { page } = useSelector((state: SystemState) => state.navigation);
+  const page = useSelector(getCurrentPage);
   const [open, setMenuOpen] = useState(false);
   const openMenuCallback = useCallback(() => setMenuOpen(true), []);
   const closeMenuCallback = useCallback(() => setMenuOpen(false), []);

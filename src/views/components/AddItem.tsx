@@ -18,9 +18,10 @@ import { ManagerIcons } from '../icons/ManagerIcons';
 import { formatCurrency, formatTime } from '../../helpers';
 import { AddItemButton } from './CommonStyledComponents';
 import { getWalletAmount } from '../../state/features/user/userSelector';
+import { getCurrentPage } from '../../state/features/navigation/navigationSelectors';
 
 const AddItem: React.FC = () => {
-  const { page } = useSelector((state: SystemState) => state.navigation);
+  const page = useSelector(getCurrentPage);
   const wallet = useSelector(getWalletAmount);
   const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
