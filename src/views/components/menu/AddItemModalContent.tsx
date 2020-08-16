@@ -54,6 +54,7 @@ const AddItemModalContent = <T extends string, S extends BaseItemType>({
           </ListItem>
         ))}
       </F7List>
+      <ItemName>{`${title} Description`}</ItemName>
       <ItemDescription>{source[selectedType].description}</ItemDescription>
       <F7List themeDark mediaList>
         {dataValues.map((dataValue) => (

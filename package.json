@@ -2,6 +2,7 @@
   "name": "adventure-capitalist",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "devDependencies": {
     "@types/uuid": "^8.3.0",
     "@types/node": "^12.12.54",

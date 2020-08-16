@@ -21,7 +21,7 @@ const ManagersPage: React.FC = () => {
     <>
       {managers.length === 0 ? (
         <NotAvailableMessage>
-          Add a new manager using the <FontAwesomeIcon icon={faPlusCircle} /> icon.
+          Add a new manager using the <FontAwesomeIcon icon={faPlusCircle} /> icon
         </NotAvailableMessage>
       ) : (
         <StyledList themeDark mediaList style={{ margin: '0' }}>
