@@ -1,15 +1,14 @@
 import React, { useCallback, useState } from 'react';
-import { IconSlot } from './BusinessBadge';
+import { IconSlot, StyledItem } from '../CommonStyledComponents';
 import { F7SwipeoutActions, F7SwipeoutButton } from 'framework7-react';
 import { useDispatch } from 'react-redux';
-import { StyledItem } from './CommonStyledComponents';
-import { ManagerIcons } from '../icons/ManagerIcons';
+import { ManagerIcons } from '../../icons/ManagerIcons';
+import { removeManager } from '../../../state/features/managers/managersActions';
+import { Manager } from '../../../state/features/managers/managersTypes';
 import AddManagedBusiness from './AddManagedBusiness';
 import ManagerOptions from './ManagerOptions';
 import ManagedBusinesses from './ManagedBusinesses';
-import { removeManager } from '../../state/features/managers/managersActions';
 import styled from 'styled-components';
-import { Manager } from '../../state/features/managers/managersTypes';
 
 const NoBusinessesMessage = styled.div`
   font-style: italic;

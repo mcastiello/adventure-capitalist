@@ -1,16 +1,16 @@
 import React, { useCallback, useState } from 'react';
-import { ManagedBusinessProps } from '../GameProps';
+import { ManagedBusinessProps } from '../../GameProps';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUnmanagedBusinesses } from '../../state/features/businesses/businessesSelectors';
-import { BusinessID } from '../../state/features/businesses/businessesTypes';
-import { addManagedBusiness } from '../../state/features/managers/managersActions';
-import styled from 'styled-components';
+import { getUnmanagedBusinesses } from '../../../state/features/businesses/businessesSelectors';
+import { BusinessID } from '../../../state/features/businesses/businessesTypes';
+import { addManagedBusiness } from '../../../state/features/managers/managersActions';
 import { F7Button, F7List, F7Popover } from 'framework7-react';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Managers } from '../../definitions/Managers';
-import { ListItem } from './CommonStyledComponents';
-import { BusinessIcons } from '../icons/BusinessIcons';
+import { Managers } from '../../../definitions/Managers';
+import { ListItem } from '../CommonStyledComponents';
+import { BusinessIcons } from '../../icons/BusinessIcons';
+import styled from 'styled-components';
 
 const AddButton = styled(F7Button)`
   width: 35px;

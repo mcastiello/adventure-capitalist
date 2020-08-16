@@ -1,16 +1,16 @@
 import React, { useCallback, useState } from 'react';
-import { BusinessDetails } from '../../state/features/businesses/businessesTypes';
-import BusinessBadge from './BusinessBadge';
-import { formatCurrency } from '../../helpers';
+import { BusinessDetails } from '../../../state/features/businesses/businessesTypes';
+import { formatCurrency } from '../../../helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { F7Button, F7SwipeoutActions, F7SwipeoutButton } from 'framework7-react';
+import { collectProfit, removeBusiness } from '../../../state/features/businesses/businessesActions';
+import { useDispatch } from 'react-redux';
+import { StyledItem } from '../CommonStyledComponents';
+import BusinessBadge from './BusinessBadge';
 import BusinessOptions from './BusinessOptions';
 import ProfitBar from './ProfitBar';
 import styled from 'styled-components';
-import { F7Button, F7SwipeoutActions, F7SwipeoutButton } from 'framework7-react';
-import { collectProfit, removeBusiness } from '../../state/features/businesses/businessesActions';
-import { useDispatch } from 'react-redux';
-import { StyledItem } from './CommonStyledComponents';
 
 const CollectButton = styled(F7Button)`
   width: 80px;

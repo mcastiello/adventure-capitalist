@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { SystemState } from '../index';
-import { BusinessDetails, BusinessID } from './businessesTypes';
+import { BusinessDetails } from './businessesTypes';
 import { getManagedBusinesses, getManagers } from '../managers/managersSelectors';
 import { Managers } from '../../../definitions/Managers';
 import { Businesses, BusinessLevels } from '../../../definitions/Businesses';

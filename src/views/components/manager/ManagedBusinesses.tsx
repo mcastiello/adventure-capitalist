@@ -1,7 +1,7 @@
 import React from 'react';
-import { ManagedBusinessProps } from '../GameProps';
+import { ManagedBusinessProps } from '../../GameProps';
 import { useSelector } from 'react-redux';
-import { getBusinesses } from '../../state/features/businesses/businessesSelectors';
+import { getBusinesses } from '../../../state/features/businesses/businessesSelectors';
 import { F7List } from 'framework7-react';
 import styled from 'styled-components';
 import ManagedBusinessItem from './ManagedBusinessItem';

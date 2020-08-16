@@ -1,17 +1,17 @@
 import React, { useCallback, useState } from 'react';
-import { BusinessOptionsProps } from '../GameProps';
+import { BusinessOptionsProps } from '../../GameProps';
 import { F7Button, F7List, F7Popover } from 'framework7-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCertificate, faChartLine, faClock, faMoneyBillWave, faPiggyBank } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
-import { ItemDescription, ListDeleteButton, ListItem, ListUpgradeButton } from './CommonStyledComponents';
-import { formatCurrency, formatTime } from '../../helpers';
-import { Businesses } from '../../definitions/Businesses';
+import { ItemDescription, ListDeleteButton, ListItem, ListUpgradeButton } from '../CommonStyledComponents';
+import { formatCurrency, formatTime } from '../../../helpers';
+import { Businesses } from '../../../definitions/Businesses';
 import { useDispatch, useSelector } from 'react-redux';
-import { getWalletAmount } from '../../state/features/user/userSelector';
-import { upgradeBusiness } from '../../state/features/businesses/businessesActions';
-import { getManagers } from '../../state/features/managers/managersSelectors';
-import { ManagerIcons } from '../icons/ManagerIcons';
+import { getWalletAmount } from '../../../state/features/user/userSelector';
+import { upgradeBusiness } from '../../../state/features/businesses/businessesActions';
+import { getManagers } from '../../../state/features/managers/managersSelectors';
+import { ManagerIcons } from '../../icons/ManagerIcons';
+import styled from 'styled-components';
 
 const OptionsButton = styled(F7Button)`
   width: 35px;

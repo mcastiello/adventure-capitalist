@@ -2,11 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { getManagers } from '../../state/features/managers/managersSelectors';
 import { F7List } from 'framework7-react';
-import ManagerItem from '../components/ManagerItem';
-import styled from 'styled-components';
 import { NotAvailableMessage } from '../components/CommonStyledComponents';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import ManagerItem from '../components/manager/ManagerItem';
+import styled from 'styled-components';
 
 const StyledList = styled(F7List)`
   & .item-text {

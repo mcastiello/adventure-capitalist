@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import { BusinessDetails } from '../../state/features/businesses/businessesTypes';
 import { F7List } from 'framework7-react';
 import { getBusinesses } from '../../state/features/businesses/businessesSelectors';
-import BusinessItem from '../components/BusinessItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { NotAvailableMessage } from '../components/CommonStyledComponents';
+import BusinessItem from '../components/business/BusinessItem';
 
 const BusinessesPage: React.FC = () => {
   const businesses: BusinessDetails[] = useSelector(getBusinesses);

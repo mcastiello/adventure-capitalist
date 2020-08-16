@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getDelayValue } from '../../helpers';
-import { ProfitBarProps } from '../GameProps';
+import { getDelayValue } from '../../../helpers';
+import { ProfitBarProps } from '../../GameProps';
 
 const ANIMATION_CLASS = 'progress-animation';
 

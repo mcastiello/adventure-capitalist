@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react';
-import { ManagerOptionsProps } from '../GameProps';
+import { ManagerOptionsProps } from '../../GameProps';
 import { F7Button, F7List, F7Popover } from 'framework7-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBook, faChartLine, faCity, faClock, faPiggyBank } from '@fortawesome/free-solid-svg-icons';
-import { ItemDescription, ListButton, ListItem } from './CommonStyledComponents';
-import { formatCurrency } from '../../helpers';
-import { Managers } from '../../definitions/Managers';
+import { ItemDescription, ListButton, ListItem } from '../CommonStyledComponents';
+import { formatCurrency } from '../../../helpers';
+import { Managers } from '../../../definitions/Managers';
 import styled from 'styled-components';
 
 const OptionsButton = styled(F7Button)`

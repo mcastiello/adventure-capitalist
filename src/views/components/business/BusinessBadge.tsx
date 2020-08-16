@@ -1,15 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BusinessBadgeProps } from '../GameProps';
-import { BusinessIcons } from '../icons/BusinessIcons';
+import { BusinessBadgeProps } from '../../GameProps';
+import { BusinessIcons } from '../../icons/BusinessIcons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCertificate } from '@fortawesome/free-solid-svg-icons';
-
-export const IconSlot = styled.div`
-  font-size: 28px;
-  text-align: center;
-  position: relative;
-`;
+import { IconSlot } from '../CommonStyledComponents';
 
 const BadgeSlot = styled.div`
   position: absolute;
@@ -33,7 +28,7 @@ const BusinessBadge: React.FC<BusinessBadgeProps> = ({ type, level }) => {
     <IconSlot>
       {BusinessIcons[type]}
       <BadgeSlot>
-        <FontAwesomeIcon icon={faCertificate}/>
+        <FontAwesomeIcon icon={faCertificate} />
       </BadgeSlot>
       <BadgeSlotLevel>{level}</BadgeSlotLevel>
     </IconSlot>

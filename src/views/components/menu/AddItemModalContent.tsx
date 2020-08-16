@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import { F7List } from 'framework7-react';
-import { ItemDescription, ItemInputName, ItemName, ItemTitle, ListItem, ListButton } from './CommonStyledComponents';
-import { ItemProps, BaseItemType, ItemData } from './ItemProps';
+import { ItemDescription, ItemInputName, ItemName, ItemTitle, ListItem, ListButton } from '../CommonStyledComponents';
+import { ItemProps, BaseItemType, ItemData } from '../ItemProps';
 
 const AddItemModalContent = <T extends string, S extends BaseItemType>({
   open,

@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { F7SwipeoutActions, F7SwipeoutButton } from 'framework7-react';
 import { useDispatch } from 'react-redux';
-import { StyledItem } from './CommonStyledComponents';
-import { removeManagedBusiness } from '../../state/features/managers/managersActions';
-import { BusinessIcons } from '../icons/BusinessIcons';
+import { StyledItem } from '../CommonStyledComponents';
+import { removeManagedBusiness } from '../../../state/features/managers/managersActions';
+import { BusinessIcons } from '../../icons/BusinessIcons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { ManagedBusinessItemProps } from '../GameProps';
+import { ManagedBusinessItemProps } from '../../GameProps';
 
 const ManagedBusinessItem: React.FC<ManagedBusinessItemProps> = ({ managerId, business, disabled }) => {
   const [deleteState, setDeleteState] = useState(false);

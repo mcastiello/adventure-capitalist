@@ -2,15 +2,14 @@ import React, { useCallback } from 'react';
 import { MenuProps } from '../GameProps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCity, faUserCircle, faUsers } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { SystemState } from '../../state/features';
 import { formatCurrency } from '../../helpers';
 import { F7List, F7ListItem } from 'framework7-react';
 import { setPage } from '../../state/features/navigation/navigationActions';
 import { GamePage } from '../../state/features/navigation/navigationTypes';
 import { getWalletAmount } from '../../state/features/user/userSelector';
 import { getCurrentPage } from '../../state/features/navigation/navigationSelectors';
+import styled from 'styled-components';
 
 const UserIcon = styled(FontAwesomeIcon)`
   font-size: 240px;

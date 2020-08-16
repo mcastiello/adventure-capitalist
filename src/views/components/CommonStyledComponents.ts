@@ -70,6 +70,12 @@ export const ListDeleteButton = styled(ListOptionsButton)`
   background: red;
 `;
 
+export const IconSlot = styled.div`
+  font-size: 28px;
+  text-align: center;
+  position: relative;
+`;
+
 export const StyledItem = styled(F7ListItem)`
   pointer-events: none;
   & > .item-content > .item-inner {

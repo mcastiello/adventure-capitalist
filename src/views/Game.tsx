@@ -1,17 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { SystemState } from '../state/features';
 import { GameProps } from './GameProps';
 import styled from 'styled-components';
 import { F7Panel, F7View, F7Views } from 'framework7-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { GamePage } from '../state/features/navigation/navigationTypes';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { getCurrentPage } from '../state/features/navigation/navigationSelectors';
 import GameMenu from './pages/GameMenu';
 import BusinessesPage from './pages/Businesses';
 import ManagersPage from './pages/Managers';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import AddItem from './components/AddItem';
-import { getCurrentPage } from '../state/features/navigation/navigationSelectors';
+import AddItem from './components/menu/AddItem';
 
 const MIN_PAGE_WIDTH = 900;
 const HEADER_HEIGHT = 40;
@@ -97,11 +96,7 @@ const Game: React.FC<GameProps> = ({ width, height }) => {
           <Title>Adventure Capitalist</Title>
           <AddItem />
         </Header>
-        {page === GamePage.Businesses ? (
-          <BusinessesPage />
-        ) : (
-          <ManagersPage />
-        )}
+        {page === GamePage.Businesses ? <BusinessesPage /> : <ManagersPage />}
       </GameContainer>
     </GameArea>
   );
