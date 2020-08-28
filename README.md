@@ -1,14 +1,14 @@
 # Adventure Capitalist
 This little simulator game has been created as part of a test for a job application (like most of my repos), the game is meant to be a sort of business entrepreneur simulator. You need to buy new businesses and collect money from them, or you can hire managers that can do the job for you.
 
-You can find a deplyed version of the game at [this link](http://s18605048.onlinehome-server.info/data/projects/adventure-capitalist/).
+You can find a deployed version of the game at [this link](http://s18605048.onlinehome-server.info/data/projects/adventure-capitalist/).
 
 ## Solution
 As this game should be to introduce myself to a gaming company, I was tempted to use some graphic engine like PixiJS, which I'm quite used to, but the type of game have made WebGL rendering almost a waste. So I opted for a more HTML oriented solution using React.
 
-I've also used Redux and ReduxSaga, React's best friends when it comes to handle state and side effects. This is because one of the requirement is that the game should keep 'working' when the breowser is shut, so storing the state in local storage seemed to me a good compromise as I wasn't going to create a full-stack application with a server component (I've been mostly focused on FrontEnd in the last few years, so my BackEnd knowledge may be a bit rusty).
+I've also used Redux and ReduxSaga, React's best friends when it comes to handle state and side effects. This is because one of the requirement is that the game should keep 'working' when the browser is shut, so storing the state in local storage seemed to me a good compromise as I wasn't going to create a full-stack application with a server component (I've been mostly focused on FrontEnd in the last few years, so my BackEnd knowledge may be a bit rusty).
 
-I've tried to create a responsive design that would adatp to adapt not just to the screen size, but also to the device type. I've used Framework7 to help myself with the task, which provides different themes for Android/iOS/Desktop. The side menu will be static on larger screens, but it will switch to a sliding panel when the browser area become smaller.
+I've tried to create a responsive design that would adatp not just to the screen size, but also to the device type. I've used Framework7 to help myself with the task, which provides different themes for Android/iOS/Desktop. The side menu will be static on larger screens, but it will switch to a sliding panel when the browser area become smaller.
 
 ## Project Structure
 The project keeps state and views separated and it makes large use of selectors and actions dispatcher to connect the two areas. Both views and state handle managers and businesses independently in order to make the code a bit more clean.
